@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const links = ["Home", "Games", "Leaderboard", "Community", "About"];
+const links = ["Home", "contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("Home");
