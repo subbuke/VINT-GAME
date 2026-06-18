@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ContactForm() {
+export default function Feedback() {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
@@ -137,7 +137,7 @@ export default function ContactForm() {
 
       <section className="contact-section">
         <div className="contact-intro">
-          <h2 className="contact-title">Get in Touch</h2>
+          <h2 className="contact-title">Feedback</h2>
           <p className="contact-description">
             Fill out the form below and we'll get back to you as soon as possible.
           </p>
@@ -157,11 +157,6 @@ export default function ContactForm() {
             <div className="form-group">
               <label htmlFor="email" className="form-label">Email</label>
               <input id="email" name="email" className="form-input" placeholder="Your email" type="email" required />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone" className="form-label">Phone</label>
-              <input id="phone" name="phone" className="form-input" placeholder="+1 (234) 56789" type="text" />
             </div>
 
             <div className="form-group">

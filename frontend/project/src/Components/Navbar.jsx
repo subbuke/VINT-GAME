@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const links = ["Home", "contact"];
+
+const links = [
+  { name: "Home", path: "/" },
+  { name: "Feedback", path: "/feedback" },
+];
 
 export default function Navbar() {
-  const [active, setActive] = useState("Home");
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -19,6 +23,7 @@ export default function Navbar() {
           backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(124, 58, 237, 0.2);
         }
+
         .nav-inner {
           max-width: 1200px;
           margin: 0 auto;
@@ -28,6 +33,7 @@ export default function Navbar() {
           align-items: center;
           justify-content: space-between;
         }
+
         .logo {
           font-size: 20px;
           font-weight: 700;
@@ -38,6 +44,7 @@ export default function Navbar() {
           align-items: center;
           gap: 8px;
         }
+
         .logo-dot {
           width: 8px;
           height: 8px;
@@ -45,6 +52,7 @@ export default function Navbar() {
           background: #7c3aed;
           box-shadow: 0 0 8px #7c3aed;
         }
+
         .nav-links {
           display: flex;
           align-items: center;
@@ -53,7 +61,9 @@ export default function Navbar() {
           margin: 0;
           padding: 0;
         }
-        .nav-links a {
+
+        .nav-links a,
+        .mobile-menu a {
           display: block;
           padding: 6px 14px;
           font-size: 14px;
@@ -62,15 +72,20 @@ export default function Navbar() {
           border-radius: 6px;
           transition: color 150ms, background 150ms;
         }
-        .nav-links a:hover {
+
+        .nav-links a:hover,
+        .mobile-menu a:hover {
           color: #f1f0f5;
           background: rgba(124, 58, 237, 0.12);
         }
-        .nav-links a.active {
+
+        .nav-links a.active,
+        .mobile-menu a.active {
           color: #f1f0f5;
           background: rgba(124, 58, 237, 0.18);
           position: relative;
         }
+
         .nav-links a.active::after {
           content: '';
           position: absolute;
@@ -83,6 +98,7 @@ export default function Navbar() {
           background: #7c3aed;
           box-shadow: 0 0 6px #7c3aed;
         }
+
         .hamburger {
           display: none;
           flex-direction: column;
@@ -92,6 +108,7 @@ export default function Navbar() {
           cursor: pointer;
           padding: 4px;
         }
+
         .hamburger span {
           display: block;
           width: 22px;
@@ -100,9 +117,19 @@ export default function Navbar() {
           border-radius: 2px;
           transition: transform 250ms, opacity 250ms;
         }
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .hamburger.open span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+
         .mobile-menu {
           display: none;
           flex-direction: column;
@@ -110,50 +137,47 @@ export default function Navbar() {
           border-top: 1px solid rgba(124, 58, 237, 0.15);
           gap: 2px;
         }
-        .mobile-menu a {
-          padding: 10px 12px;
-          font-size: 15px;
-          color: #9d9ab0;
-          text-decoration: none;
-          border-radius: 6px;
-          transition: color 150ms, background 150ms;
-        }
-        .mobile-menu a:hover,
-        .mobile-menu a.active {
-          color: #f1f0f5;
-          background: rgba(124, 58, 237, 0.14);
-        }
+
         @media (max-width: 640px) {
-          .nav-links { display: none; }
-          .hamburger { display: flex; }
-          .mobile-menu { display: flex; }
+          .nav-links {
+            display: none;
+          }
+
+          .hamburger {
+            display: flex;
+          }
+
+          .mobile-menu {
+            display: flex;
+          }
         }
       `}</style>
 
       <nav className="nav">
         <div className="nav-inner">
-          <a href="#" className="logo">
+          <NavLink to="/" className="logo">
             <span className="logo-dot" />
             VINT-GAME
-          </a>
+          </NavLink>
 
           <ul className="nav-links">
             {links.map((link) => (
-              <li key={link}>
-                <a
-                  href="#"
-                  className={active === link ? "active" : ""}
-                  onClick={(e) => { e.preventDefault(); setActive(link); }}
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive ? "active" : ""
+                  }
                 >
-                  {link}
-                </a>
+                  {link.name}
+                </NavLink>
               </li>
             ))}
           </ul>
 
           <button
             className={`hamburger ${menuOpen ? "open" : ""}`}
-            onClick={() => setMenuOpen((o) => !o)}
+            onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
             <span />
@@ -165,14 +189,16 @@ export default function Navbar() {
         {menuOpen && (
           <div className="mobile-menu">
             {links.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className={active === link ? "active" : ""}
-                onClick={(e) => { e.preventDefault(); setActive(link); setMenuOpen(false); }}
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  isActive ? "active" : ""
+                }
+                onClick={() => setMenuOpen(false)}
               >
-                {link}
-              </a>
+                {link.name}
+              </NavLink>
             ))}
           </div>
         )}

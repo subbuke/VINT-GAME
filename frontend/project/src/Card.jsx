@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import snake from "./images/snake.jpg"
+import square from "./images/square.png"
+import mario from "./images/mario.jpg"
 
 const games = [
   {
@@ -14,21 +16,23 @@ const games = [
   },
   {
     id: 2,
-    title: "Void Protocol",
-    genre: "FPS",
-    rating: 4.5,
-    players: "1.1M",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80",
-    tag: "New",
+    title: "Ludo",
+    genre: "indooe",
+    rating: 4.1,
+    players: "4",
+    image: square,
+    tag: "Hot",
+    path: "/Ludo"
   },
   {
     id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
+    title: "super mario",
+    genre: "play",
+    rating: 4.5,
+    players: "1",
+    image: mario,
+    tag: "good",
+    path: "/mario"
   },
   {
     id: 3,

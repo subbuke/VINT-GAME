@@ -1,8 +1,11 @@
-import './App.css'
+
+
 import { Route, Routes } from "react-router-dom";
 import Home from './Home';
 import Snake from './Snake';
-import ContactForm from './Contact';
+import Feedback from './Feedback';
+import Ludo from './Components/Ludo'
+import Mario from './Components/Mario'
 
 function App() {
  
@@ -12,7 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/snake" element={<Snake />}/>
-        <Route path="/contact" element={<ContactForm />}/>
+        <Route path="/feedback" element={<Feedback />}/>
+        <Route path="/Ludo" element={<Ludo />}/>
+        <Route path="/mario" element={<Mario />}/>
       </Routes>
     </>
   )
