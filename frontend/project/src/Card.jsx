@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import snake from "./images/snake.jpg"
 import square from "./images/square.png"
 import mario from "./images/mario.jpg"
+import puzzle from "./images/puzzle.webp"
 
 const games = [
   {
@@ -35,67 +36,14 @@ const games = [
     path: "/mario"
   },
   {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
+    id: 4,
+    title: "puzzle",
+    genre: "play",
+    rating: 4,
+    players: "1",
+    image: puzzle,
+    tag: "puzzle",
+    path: "/puzzle"
   },
   {
     id: 3,
@@ -115,6 +63,7 @@ const games = [
     image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
     tag: null,
   }
+  
 ];
 
 const tagColors = {
