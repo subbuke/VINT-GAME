@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Navbar from "./Components/Navbar"
+import "./App.css"
 
 export default function Feedback() {
   const [status, setStatus] = useState("");
@@ -35,6 +37,7 @@ export default function Feedback() {
           margin-left: auto;
           margin-right: auto;
           padding: 3rem 1rem;
+          margin-top: 3rem
         }
         .contact-intro > * + * {
           margin-top: 1rem;
@@ -67,7 +70,7 @@ export default function Feedback() {
           padding: 0.5rem;
           border: 1px solid #2e2a3d;
           background: #1a1425;
-          color: #f1f0f5;
+          color:rgb(247, 247, 247);
           display: flex;
           height: 2.5rem;
           width: 100%;
@@ -134,7 +137,8 @@ export default function Feedback() {
           text-align: center;
         }
       `}</style>
-
+ 
+         <Navbar />
       <section className="contact-section">
         <div className="contact-intro">
           <h2 className="contact-title">Feedback</h2>
@@ -170,7 +174,7 @@ export default function Feedback() {
           </button>
 
           {status === "success" && (
-            <div className="form-success">✓ Message sent successfully! We'll get back to you soon.</div>
+            <div className="form-success">✓ Message sent successfully! Thanks for feedback.</div>
           )}
           {status === "error" && (
             <div className="form-error">✕ Something went wrong. Please try again.</div>

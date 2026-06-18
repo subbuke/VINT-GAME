@@ -7,6 +7,8 @@ import Feedback from './Feedback';
 import Ludo from './Components/Ludo'
 import Mario from './Components/Mario'
 import PuzzleGame from './Components/Puzzle'
+import SnakeLadderGame from './Components/SnakeLadder'
+
 
 function App() {
  
@@ -20,6 +22,7 @@ function App() {
         <Route path="/Ludo" element={<Ludo />}/>
         <Route path="/mario" element={<Mario />}/>
         <Route path="/puzzle" element={<PuzzleGame />} />
+        <Route path="/snakeladder" element={<SnakeLadderGame />}/>
       </Routes>
     </>
   )

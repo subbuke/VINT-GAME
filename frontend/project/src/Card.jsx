@@ -3,6 +3,7 @@ import snake from "./images/snake.jpg"
 import square from "./images/square.png"
 import mario from "./images/mario.jpg"
 import puzzle from "./images/puzzle.webp"
+import SnakeLadder from "./images/SnakeLadder.png"
 
 const games = [
   {
@@ -46,24 +47,15 @@ const games = [
     path: "/puzzle"
   },
   {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
+    id: 5,
+    title: "snake ladder",
+    genre: "indooe",
     rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
+    players: "2",
+    image: SnakeLadder,
     tag: null,
-  },
-  {
-    id: 3,
-    title: "Neon Drift",
-    genre: "Racing",
-    rating: 4.2,
-    players: "890K",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80",
-    tag: null,
-  }
-  
+    path: "/snakeladder"
+  } 
 ];
 
 const tagColors = {
