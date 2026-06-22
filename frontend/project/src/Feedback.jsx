@@ -1,31 +1,36 @@
 import { useState } from "react";
-import Navbar from "./Components/Navbar"
-import "./App.css"
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import axios from "axios";
 
 export default function Feedback() {
   const [status, setStatus] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-    const form = e.target;
-    const data = new FormData(form);
 
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: data,
-      });
-      const json = await res.json();
-      if (json.success) {
+    axios
+      .post("https://expert-spork-pjrpxp9965wjf76w-3000.app.github.dev/create", {
+        name,
+        email,
+        message,
+      })
+      .then((result) => {
+        console.log(result);
         setStatus("success");
-        form.reset();
-      } else {
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
         setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+      });
   };
 
   return (
@@ -46,7 +51,7 @@ export default function Feedback() {
           font-size: 1.875rem;
           line-height: 2.25rem;
           font-weight: 700;
-          color: #f1f0f5;
+          color: #000000;
         }
         .contact-description {
           color: rgb(107 114 128);
@@ -137,8 +142,8 @@ export default function Feedback() {
           text-align: center;
         }
       `}</style>
- 
-         <Navbar />
+
+      <Navbar />
       <section className="contact-section">
         <div className="contact-intro">
           <h2 className="contact-title">Feedback</h2>
@@ -148,24 +153,43 @@ export default function Feedback() {
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-          <input type="hidden" name="subject" value="New Contact Form Submission" />
-          <input type="hidden" name="from_name" value="My Website" />
-
           <div className="form-group-container">
             <div className="form-group">
               <label htmlFor="name" className="form-label">Name</label>
-              <input id="name" name="name" className="form-input" placeholder="Your name" type="text" required />
+              <input
+                id="name"
+                name="name"
+                className="form-input"
+                placeholder="Your name"
+                type="text"
+                required
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
             <div className="form-group">
               <label htmlFor="email" className="form-label">Email</label>
-              <input id="email" name="email" className="form-input" placeholder="Your email" type="email" required />
+              <input
+                id="email"
+                name="email"
+                className="form-input"
+                placeholder="Your email"
+                type="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
 
             <div className="form-group">
               <label htmlFor="message" className="form-label">Message</label>
-              <textarea className="form-textarea" id="message" name="message" placeholder="Your message" required />
+              <textarea
+                className="form-textarea"
+                id="message"
+                name="message"
+                placeholder="Your message"
+                required
+                onChange={(e) => setMessage(e.target.value)}
+              />
             </div>
           </div>
 
@@ -174,10 +198,10 @@ export default function Feedback() {
           </button>
 
           {status === "success" && (
-            <div className="form-success">✓ Message sent successfully! Thanks for feedback.</div>
+            <div className="form-success">Message sent successfully! Thanks for feedback.</div>
           )}
           {status === "error" && (
-            <div className="form-error">✕ Something went wrong. Please try again.</div>
+            <div className="form-error">Something went wrong. Please try again.</div>
           )}
         </form>
       </section>
